@@ -23,7 +23,10 @@ public class Player : MonoBehaviour {
         Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 10, layerForma);
         if (Input.GetMouseButtonDown(0))
             if (hit.transform.tag == "Forma")
+            {
                 currWeapon.GetComponent<Transformator>().Transformate(hit.transform.gameObject);
+                UIManager.Get().DrawText(hit.transform.gameObject);
+            }
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * 10, Color.red, 1);
     }
 

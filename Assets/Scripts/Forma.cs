@@ -9,14 +9,26 @@ public class Forma : MonoBehaviour {
         transform.Rotate(rotacion);
     }
 
-    public void Traslate(Vector3 traslacion)
-    {
-        transform.position += traslacion;
+    public void Traslate(float valor,int eje)
+    {        
+        switch (eje)
+        {
+            case 0:
+                transform.position += transform.right * valor;
+                break;
+            case 1:
+                transform.position += transform.up * valor;
+                break;
+            case 2:
+                transform.position += transform.forward * valor;
+                break;
+        }
     }
 
     public void Symmetry(Vector3 ejeSimetria, Vector3 vectorTraslacion)
     {
-        transform.position = new Vector3(transform.position.x * vectorTraslacion.x, transform.position.y * vectorTraslacion.y, transform.position.z * vectorTraslacion.z);
+        transform.position = new Vector3(transform.position.x * vectorTraslacion.x,
+            transform.position.y * vectorTraslacion.y, transform.position.z * vectorTraslacion.z);
         transform.Rotate(ejeSimetria,180);
     }
 

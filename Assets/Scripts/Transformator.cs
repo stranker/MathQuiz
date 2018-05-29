@@ -12,15 +12,6 @@ abstract public class Transformator : MonoBehaviour {
     }
     public int eje;
     public float valor;
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void NextEje()
     {
