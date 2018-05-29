@@ -5,7 +5,6 @@ using UnityEngine;
 public class Scaleitor : Transformator {
 
     public GameObject mira;
-    public float valor;
     public Vector3 vectorEscalacion;
     public LayerMask layerForma;
 
@@ -20,9 +19,9 @@ public class Scaleitor : Transformator {
     {
         CambiarVectorEje();
         if (Input.GetKey(KeyCode.E) || Input.mouseScrollDelta.y > 0)
-            valor += 0.1f;
+            valor += 0.5f;
         else if (Input.GetKey(KeyCode.Q) || Input.mouseScrollDelta.y < 0)
-            valor -= 0.1f;
+            valor -= 0.5f;
     }
 
     override public void Transformate(GameObject forma)

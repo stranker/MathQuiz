@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Rotator : Transformator {
 
-    public int valor;
     public Vector3 vectorRotacion;
     public LayerMask layerForma;
 
@@ -19,6 +18,9 @@ public class Rotator : Transformator {
             valor += 15;
         else if (Input.GetKeyDown(KeyCode.Q))
             valor -= 15;
+        if (valor > 360 || valor < -360)
+            valor = 0;
+
     }
 
     public override void Transformate(GameObject forma)

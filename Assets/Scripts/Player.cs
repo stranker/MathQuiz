@@ -6,7 +6,6 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     public List<GameObject> transformadores;
-    private string weaponName;
     private GameObject currWeapon;
     public LayerMask layerForma;
     
@@ -19,16 +18,13 @@ public class Player : MonoBehaviour {
 	void Update () {
         ChangeWeapon();
         ChangeAxis();
-    }
 
-    private void FixedUpdate()
-    {
         RaycastHit hit;
-        Physics.Raycast(Camera.main.transform.position, transform.forward, out hit, 5, layerForma);
+        Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 10, layerForma);
         if (Input.GetMouseButtonDown(0))
             if (hit.transform.tag == "Forma")
                 currWeapon.GetComponent<Transformator>().Transformate(hit.transform.gameObject);
-        Debug.DrawRay(Camera.main.transform.position, transform.forward * 10, Color.red, 1);
+        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * 10, Color.red, 1);
     }
 
     private void ChangeWeapon()
@@ -56,7 +52,6 @@ public class Player : MonoBehaviour {
             if (i == index)
             {
                 transformadores[i].gameObject.SetActive(true);
-                weaponName = transformadores[i].gameObject.name;
                 currWeapon = transformadores[i].gameObject;
             }
             else
@@ -64,8 +59,13 @@ public class Player : MonoBehaviour {
         }
     }
 
+    public GameObject GetWeapon()
+    {
+        return currWeapon;
+    }
+
     public string GetWeaponName()
     {
-        return weaponName;
+        return currWeapon.gameObject.name;
     }
 }

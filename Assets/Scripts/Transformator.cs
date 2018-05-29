@@ -11,6 +11,7 @@ abstract public class Transformator : MonoBehaviour {
         LAST
     }
     public int eje;
+    public float valor;
     // Use this for initialization
     void Start () {
 		
@@ -34,4 +35,8 @@ abstract public class Transformator : MonoBehaviour {
         return eje;
     }
 
+    public float GetValor()
+    {
+        return valor;
+    }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Traslator : Transformator {
 
-    public int valor;
     public Vector3 vectorTraslacion;
     public LayerMask layerForma;
 
