@@ -75,6 +75,7 @@ public class RutinasTraslator : Transformator2
         Vector3 toPos = ShapeManager.Get().transform.right;
         toPos *= value;
         toPos += pos1;
+
         while (timer <= time)
         {
             ShapeManager.Get().transform.position = Vector3.Lerp(pos1, toPos, ac.Evaluate(timer / time));           
