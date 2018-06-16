@@ -5,22 +5,46 @@ using UnityEngine;
 public class RutinasRotator : Transformator2
 {
 
-    private float totalTime;    
-    public AnimationCurve ac;    
+    public AnimationCurve ac;
+    public int maxValue;
+    private float totalTime;
     private float timer;
-
+    private float t;
     private void Start()
     {
         totalTime = ShapeManager.Get().GetTime();
         timer = 0;
+        t = 0;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-            value += 45;
-        else if (Input.GetKeyDown(KeyCode.Q))
-            value -= 45;
+        Inputs();
+    }
+    private void Inputs()
+    {        
+        if (Input.GetKey(KeyCode.E))
+            if (value < maxValue)
+                if (t > 0.1f)
+                {
+                    value += 45;
+                    t = 0;
+                }
+                else
+                    t += Time.deltaTime;
+            else
+                value = maxValue;
+        else if (Input.GetKey(KeyCode.Q))
+            if (value > -maxValue)
+                if (t > 0.1f)
+                {
+                    value -= 45;
+                    t = 0;
+                }
+                else
+                    t += Time.deltaTime;
+            else
+                value = -maxValue;
     }
     public override void Transformate()
     {

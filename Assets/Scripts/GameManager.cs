@@ -4,29 +4,41 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    public static GameManager instance = null;
+    private static GameManager instance;
+    public static GameManager Get()
+    {
+        return instance;
+    }
+    public Vector3 endPos;
+    public Vector3 endRot;
+    public Vector3 startPos;
     public GameObject player;
 
     void Awake()
     {
-        if (instance == null)
+        if (!instance)
             instance = this;
-        else if (instance != this)
+        else
             Destroy(gameObject);
-        DontDestroyOnLoad(gameObject);
     }
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    public static GameManager Get()
+    public Vector3 GetStartPos()
     {
-        return instance;
+        return startPos;
+    }
+    public Vector3 GetEndPos()
+    {
+        return endPos;
+    }
+    public Vector3 GetEndRot()
+    {
+        return endRot;
+    }
+    public void Win()
+    {
+        Debug.Log("WIN");
+    }
+    public void Restart()
+    {
+        Debug.Log("LOSE");
     }
 }

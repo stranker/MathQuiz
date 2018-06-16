@@ -4,22 +4,46 @@ using UnityEngine;
 
 public class RutinasEscalator : Transformator2
 {
-    private float totalTime;    
-    public AnimationCurve ac;    
+    public AnimationCurve ac;
+    public int maxValue;
+    private float totalTime;
     private float timer;
-
+    private float t;
     private void Start()
     {
         totalTime = ShapeManager.Get().GetTime();
         timer = 0;
+        t = 0;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-            value++;
-        else if (Input.GetKeyDown(KeyCode.Q))
-            value--;
+        Inputs();
+    }
+    private void Inputs()
+    {
+        if (Input.GetKey(KeyCode.E))
+            if (value < maxValue)
+                if (t > 0.1f)
+                {
+                    value++;
+                    t = 0;
+                }
+                else
+                    t += Time.deltaTime;
+            else
+                value = maxValue;
+        else if (Input.GetKey(KeyCode.Q))
+            if (value > -maxValue)
+                if (t > 0.1f)
+                {
+                    value--;
+                    t = 0;
+                }
+                else
+                    t += Time.deltaTime;
+            else
+                value = -maxValue;
     }
     public override void Transformate()
     {
@@ -54,7 +78,7 @@ public class RutinasEscalator : Transformator2
             ShapeManager.Get().transform.localScale = Vector3.Lerp(posScale1, posScale2, ac.Evaluate(timer / time));
             timer += Time.deltaTime;
             yield return null;
-        }        
+        }
         timer = 0.0f;
     }
 
@@ -78,7 +102,7 @@ public class RutinasEscalator : Transformator2
             ShapeManager.Get().transform.localScale = new Vector3(Mathf.Lerp(posScale1.x, toPos.x, ac.Evaluate(timer / time)), posScale1.y, posScale1.z);
             timer += Time.deltaTime;
             yield return null;
-        }        
+        }
         timer = 0.0f;
     }
 
@@ -101,7 +125,7 @@ public class RutinasEscalator : Transformator2
             ShapeManager.Get().transform.localScale = new Vector3(posScale1.x, Mathf.Lerp(posScale1.y, toPos.y, ac.Evaluate(timer / time)), posScale1.z);
             timer += Time.deltaTime;
             yield return null;
-        }        
+        }
         timer = 0.0f;
     }
 
@@ -124,7 +148,7 @@ public class RutinasEscalator : Transformator2
             ShapeManager.Get().transform.localScale = new Vector3(posScale1.x, posScale1.y, Mathf.Lerp(posScale1.z, toPos.z, ac.Evaluate(timer / time)));
             timer += Time.deltaTime;
             yield return null;
-        }        
+        }
         timer = 0.0f;
     }
 }
