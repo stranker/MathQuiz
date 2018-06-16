@@ -1,8 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Forma : MonoBehaviour {
+
+    public GameObject transformacion;
+    public List<Transformacion> transformationList;
 
     public void Rotate(Vector3 rotacion)
     {
@@ -10,7 +12,7 @@ public class Forma : MonoBehaviour {
     }
 
     public void Traslate(float valor,int eje)
-    {        
+    {
         switch (eje)
         {
             case 0:
