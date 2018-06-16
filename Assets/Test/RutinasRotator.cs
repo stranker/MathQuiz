@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RutinasRotator : MonoBehaviour
+public class RutinasRotator : Transformator2
 {
 
-    private float totalTime;
-    public Transform endPos;
-    public AnimationCurve ac;
-    public int toX;
-
+    private float totalTime;    
+    public AnimationCurve ac;    
     private float timer;
 
     private void Start()
@@ -20,21 +17,24 @@ public class RutinasRotator : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.E))
+            value += 45;
+        else if (Input.GetKeyDown(KeyCode.Q))
+            value -= 45;
+    }
+    public override void Transformate()
+    {
+        switch (eje)
         {
-            ShapeManager.Get().AddCommand(Rotate(endPos.rotation, ac, totalTime));
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            ShapeManager.Get().AddCommand(RotateInX(toX, ac, totalTime));
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            ShapeManager.Get().AddCommand(RotateInY(toX, ac, totalTime));
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            ShapeManager.Get().AddCommand(RotateInZ(toX, ac, totalTime));
+            case 0:
+                ShapeManager.Get().AddCommand(RotateInX(value, ac, totalTime));
+                break;
+            case 1:
+                ShapeManager.Get().AddCommand(RotateInY(value, ac, totalTime));
+                break;
+            case 2:
+                ShapeManager.Get().AddCommand(RotateInZ(value, ac, totalTime));
+                break;
         }
     }
 
@@ -51,7 +51,7 @@ public class RutinasRotator : MonoBehaviour
         Quaternion pos1 = ShapeManager.Get().transform.rotation;
         while (timer <= time)
         {
-            transform.rotation = Quaternion.Lerp(pos1, pos2, ac.Evaluate(timer / time));
+            ShapeManager.Get().transform.rotation = Quaternion.Lerp(pos1, pos2, ac.Evaluate(timer / time));
             timer += Time.deltaTime;
             yield return null;
         }
@@ -75,7 +75,7 @@ public class RutinasRotator : MonoBehaviour
 
         while (timer <= time)
         {
-            transform.eulerAngles = new Vector3(Mathf.Lerp(pos1.x, toPos.x, ac.Evaluate(timer / time)), toPos.y, toPos.z);
+            ShapeManager.Get().transform.eulerAngles = new Vector3(Mathf.Lerp(pos1.x, toPos.x, ac.Evaluate(timer / time)), toPos.y, toPos.z);
             timer += Time.deltaTime;
             yield return null;
         }
@@ -98,7 +98,7 @@ public class RutinasRotator : MonoBehaviour
 
         while (timer <= time)
         {
-            transform.eulerAngles = new Vector3(toPos.x, Mathf.Lerp(pos1.y, toPos.y, ac.Evaluate(timer / time)), toPos.z);
+            ShapeManager.Get().transform.eulerAngles = new Vector3(toPos.x, Mathf.Lerp(pos1.y, toPos.y, ac.Evaluate(timer / time)), toPos.z);
             timer += Time.deltaTime;
             yield return null;
         }
@@ -121,7 +121,7 @@ public class RutinasRotator : MonoBehaviour
 
         while (timer <= time)
         {
-            transform.eulerAngles = new Vector3(toPos.x, toPos.y, Mathf.Lerp(pos1.z, toPos.z, ac.Evaluate(timer / time)));
+            ShapeManager.Get().transform.eulerAngles = new Vector3(toPos.x, toPos.y, Mathf.Lerp(pos1.z, toPos.z, ac.Evaluate(timer / time)));
             timer += Time.deltaTime;
             yield return null;
         }

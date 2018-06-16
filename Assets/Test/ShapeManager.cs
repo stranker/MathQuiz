@@ -31,7 +31,7 @@ public class ShapeManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A) && !running)
+        if (Input.GetKeyDown(KeyCode.I) && !running)
         {
             ExecuteCommand();
         }
@@ -48,8 +48,9 @@ public class ShapeManager : MonoBehaviour
         for (int i = 0; i < commandList.Count; i++)
         {
             StartCoroutine(commandList[i]);
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(totalTime);
         }
+        commandList.Clear();
         running = false;
     }
     public void AddCommand(IEnumerator command)

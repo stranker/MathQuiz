@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class rutinasEscalator : MonoBehaviour
+public class RutinasEscalator : Transformator2
 {
-    private float totalTime;
-    public Transform endPos;
-    public AnimationCurve ac;
-    public int toX;    
+    private float totalTime;    
+    public AnimationCurve ac;    
     private float timer;
 
     private void Start()
@@ -18,23 +16,24 @@ public class rutinasEscalator : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.E))
+            value++;
+        else if (Input.GetKeyDown(KeyCode.Q))
+            value--;
+    }
+    public override void Transformate()
+    {
+        switch (eje)
         {
-            ShapeManager.Get().AddCommand(Scale(endPos.localScale, ac, totalTime));
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-
-            ShapeManager.Get().AddCommand(ScaleInX(toX, ac, totalTime));
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-
-            ShapeManager.Get().AddCommand(ScaleInY(toX, ac, totalTime));
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            ShapeManager.Get().AddCommand(ScaleInZ(toX, ac, totalTime));
+            case 0:
+                ShapeManager.Get().AddCommand(ScaleInX(value, ac, totalTime));
+                break;
+            case 1:
+                ShapeManager.Get().AddCommand(ScaleInY(value, ac, totalTime));
+                break;
+            case 2:
+                ShapeManager.Get().AddCommand(ScaleInZ(value, ac, totalTime));
+                break;
         }
     }
 
@@ -52,7 +51,7 @@ public class rutinasEscalator : MonoBehaviour
 
         while (timer <= time)
         {
-            transform.localScale = Vector3.Lerp(posScale1, posScale2, ac.Evaluate(timer / time));
+            ShapeManager.Get().transform.localScale = Vector3.Lerp(posScale1, posScale2, ac.Evaluate(timer / time));
             timer += Time.deltaTime;
             yield return null;
         }        
@@ -76,7 +75,7 @@ public class rutinasEscalator : MonoBehaviour
 
         while (timer <= time)
         {
-            transform.localScale = new Vector3(Mathf.Lerp(posScale1.x, toPos.x, ac.Evaluate(timer / time)), transform.localScale.y, transform.localScale.z);
+            ShapeManager.Get().transform.localScale = new Vector3(Mathf.Lerp(posScale1.x, toPos.x, ac.Evaluate(timer / time)), posScale1.y, posScale1.z);
             timer += Time.deltaTime;
             yield return null;
         }        
@@ -99,7 +98,7 @@ public class rutinasEscalator : MonoBehaviour
 
         while (timer <= time)
         {
-            transform.localScale = new Vector3(transform.localScale.x, Mathf.Lerp(posScale1.y, toPos.y, ac.Evaluate(timer / time)), transform.localScale.z);
+            ShapeManager.Get().transform.localScale = new Vector3(posScale1.x, Mathf.Lerp(posScale1.y, toPos.y, ac.Evaluate(timer / time)), posScale1.z);
             timer += Time.deltaTime;
             yield return null;
         }        
@@ -122,7 +121,7 @@ public class rutinasEscalator : MonoBehaviour
 
         while (timer <= time)
         {
-            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, Mathf.Lerp(posScale1.z, toPos.z, ac.Evaluate(timer / time)));
+            ShapeManager.Get().transform.localScale = new Vector3(posScale1.x, posScale1.y, Mathf.Lerp(posScale1.z, toPos.z, ac.Evaluate(timer / time)));
             timer += Time.deltaTime;
             yield return null;
         }        

@@ -59,7 +59,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\rutinasEscalator.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />
@@ -72,20 +71,23 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Rotator.cs" />
-    <Compile Include="Assets\Scripts\RutinasRotator.cs" />
-    <Compile Include="Assets\Scripts\RutinasTraslator.cs" />
     <Compile Include="Assets\Scripts\Scaleitor.cs" />
     <Compile Include="Assets\Scripts\Simetrikator.cs" />
     <Compile Include="Assets\Scripts\Transformator.cs" />
     <Compile Include="Assets\Scripts\Traslator.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
-    <Compile Include="Assets\ShapeManager.cs" />
+    <Compile Include="Assets\Test\Player2.cs" />
+    <Compile Include="Assets\Test\RutinasEscalator.cs" />
+    <Compile Include="Assets\Test\RutinasRotator.cs" />
+    <Compile Include="Assets\Test\RutinasTraslator.cs" />
+    <Compile Include="Assets\Test\ShapeManager.cs" />
+    <Compile Include="Assets\Test\Transformator2.cs" />
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
-    <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/gsvil/Documents/Proyectos/MathQuiz/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/gsvil/Documents/Proyectos/MathQuiz/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PackageManagerUI.Editor">
+      <HintPath>C:/Users/gsvil/Documents/Proyectos/MathQuiz/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
