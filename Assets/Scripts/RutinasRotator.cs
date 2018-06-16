@@ -5,41 +5,36 @@ using UnityEngine;
 public class RutinasRotator : MonoBehaviour
 {
 
-    public float totalTime;
+    private float totalTime;
     public Transform endPos;
     public AnimationCurve ac;
     public int toX;
 
-    private bool isRunning;
     private float timer;
 
     private void Start()
     {
+        totalTime = ShapeManager.Get().GetTime();
         timer = 0;
-        isRunning = false;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
-            if (!isRunning)
-                StartCoroutine(Rotate(transform.rotation, endPos.rotation, ac, totalTime));
+            ShapeManager.Get().AddCommand(Rotate(endPos.rotation, ac, totalTime));
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (!isRunning)
-                StartCoroutine(RotateInX(transform.eulerAngles, toX, ac, totalTime));
+            ShapeManager.Get().AddCommand(RotateInX(toX, ac, totalTime));
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (!isRunning)
-                StartCoroutine(RotateInY(transform.eulerAngles, toX, ac, totalTime));
+            ShapeManager.Get().AddCommand(RotateInY(toX, ac, totalTime));
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (!isRunning)
-                StartCoroutine(RotateInZ(transform.eulerAngles, toX, ac, totalTime));
+            ShapeManager.Get().AddCommand(RotateInZ(toX, ac, totalTime));
         }
     }
 
@@ -51,16 +46,15 @@ public class RutinasRotator : MonoBehaviour
     /// <param name="ac"> Curva de animación de tiempo </param>
     /// <param name="time"> Tiempo total de la transición </param>
     /// <returns></returns>
-    IEnumerator Rotate(Quaternion pos1, Quaternion pos2, AnimationCurve ac, float time)
+    IEnumerator Rotate(Quaternion pos2, AnimationCurve ac, float time)
     {
-        isRunning = true;
+        Quaternion pos1 = ShapeManager.Get().transform.rotation;
         while (timer <= time)
         {
             transform.rotation = Quaternion.Lerp(pos1, pos2, ac.Evaluate(timer / time));
             timer += Time.deltaTime;
             yield return null;
         }
-        isRunning = false;
         timer = 0.0f;
     }
 
@@ -73,9 +67,9 @@ public class RutinasRotator : MonoBehaviour
     /// <param name="ac"> Curva de animación de tiempo </param>
     /// <param name="time"> Tiempo total de la transición </param>
     /// <returns></returns>
-    IEnumerator RotateInX(Vector3 pos1, int value, AnimationCurve ac, float time)
+    IEnumerator RotateInX(int value, AnimationCurve ac, float time)
     {
-        isRunning = true;
+        Vector3 pos1 = ShapeManager.Get().transform.eulerAngles;
         Vector3 toPos = pos1;
         toPos = new Vector3(toPos.x + value, toPos.y, toPos.z);
 
@@ -85,7 +79,6 @@ public class RutinasRotator : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-        isRunning = false;
         timer = 0.0f;
     }
 
@@ -97,11 +90,11 @@ public class RutinasRotator : MonoBehaviour
     /// <param name="ac"> Curva de animación de tiempo </param>
     /// <param name="time"> Tiempo total de la transición </param>
     /// <returns></returns>
-    IEnumerator RotateInY(Vector3 pos1, int value, AnimationCurve ac, float time)
+    IEnumerator RotateInY(int value, AnimationCurve ac, float time)
     {
-        isRunning = true;
+        Vector3 pos1 = ShapeManager.Get().transform.eulerAngles;
         Vector3 toPos = pos1;
-        toPos = new Vector3(toPos.x , toPos.y + value, toPos.z);
+        toPos = new Vector3(toPos.x, toPos.y + value, toPos.z);
 
         while (timer <= time)
         {
@@ -109,7 +102,6 @@ public class RutinasRotator : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-        isRunning = false;
         timer = 0.0f;
     }
 
@@ -121,9 +113,9 @@ public class RutinasRotator : MonoBehaviour
     /// <param name="ac"> Curva de animación de tiempo </param>
     /// <param name="time"> Tiempo total de la transición </param>
     /// <returns></returns>
-    IEnumerator RotateInZ(Vector3 pos1, int value, AnimationCurve ac, float time)
+    IEnumerator RotateInZ(int value, AnimationCurve ac, float time)
     {
-        isRunning = true;
+        Vector3 pos1 = ShapeManager.Get().transform.eulerAngles;
         Vector3 toPos = pos1;
         toPos = new Vector3(toPos.x, toPos.y, toPos.z + value);
 
@@ -133,7 +125,6 @@ public class RutinasRotator : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-        isRunning = false;
         timer = 0.0f;
     }
 }

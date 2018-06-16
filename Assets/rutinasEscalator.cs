@@ -4,41 +4,37 @@ using UnityEngine;
 
 public class rutinasEscalator : MonoBehaviour
 {
-    public float totalTime;
+    private float totalTime;
     public Transform endPos;
     public AnimationCurve ac;
-    public int toX;
-
-    private bool isRunning;
+    public int toX;    
     private float timer;
 
     private void Start()
     {
+        totalTime = ShapeManager.Get().GetTime();
         timer = 0;
-        isRunning = false;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
-            if (!isRunning)
-                StartCoroutine(Scale(transform.localScale, endPos.localScale, ac, totalTime));
+            ShapeManager.Get().AddCommand(Scale(endPos.localScale, ac, totalTime));
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (!isRunning)
-                StartCoroutine(ScaleInX(transform.localScale, toX, ac, totalTime));
+
+            ShapeManager.Get().AddCommand(ScaleInX(toX, ac, totalTime));
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (!isRunning)
-                StartCoroutine(ScaleInY(transform.localScale, toX, ac, totalTime));
+
+            ShapeManager.Get().AddCommand(ScaleInY(toX, ac, totalTime));
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (!isRunning)
-                StartCoroutine(ScaleInZ(transform.position, toX, ac, totalTime));
+            ShapeManager.Get().AddCommand(ScaleInZ(toX, ac, totalTime));
         }
     }
 
@@ -50,16 +46,16 @@ public class rutinasEscalator : MonoBehaviour
     /// <param name="ac"> Curva de animacion de tiempo </param>
     /// <param name="time"> Tiempo total de la transición </param>
     /// <returns></returns>
-    IEnumerator Scale(Vector3 posScale1, Vector3 posScale2, AnimationCurve ac, float time)
+    IEnumerator Scale(Vector3 posScale2, AnimationCurve ac, float time)
     {
-        isRunning = true;
+        Vector3 posScale1 = ShapeManager.Get().transform.localScale;
+
         while (timer <= time)
         {
             transform.localScale = Vector3.Lerp(posScale1, posScale2, ac.Evaluate(timer / time));
             timer += Time.deltaTime;
             yield return null;
-        }
-        isRunning = false;
+        }        
         timer = 0.0f;
     }
 
@@ -71,9 +67,10 @@ public class rutinasEscalator : MonoBehaviour
     /// <param name="ac"> Curva de animacion de tiempo </param>
     /// <param name="time"> Tiempo total de la transición </param>
     /// <returns></returns>
-    IEnumerator ScaleInX(Vector3 posScale1, int value, AnimationCurve ac, float time)
+    /// 
+    IEnumerator ScaleInX(int value, AnimationCurve ac, float time)
     {
-        isRunning = true;
+        Vector3 posScale1 = ShapeManager.Get().transform.localScale;
         Vector3 toPos = posScale1;
         toPos = new Vector3(toPos.x + value, toPos.y, toPos.z);
 
@@ -82,8 +79,7 @@ public class rutinasEscalator : MonoBehaviour
             transform.localScale = new Vector3(Mathf.Lerp(posScale1.x, toPos.x, ac.Evaluate(timer / time)), transform.localScale.y, transform.localScale.z);
             timer += Time.deltaTime;
             yield return null;
-        }
-        isRunning = false;
+        }        
         timer = 0.0f;
     }
 
@@ -95,9 +91,9 @@ public class rutinasEscalator : MonoBehaviour
     /// <param name="ac"> Curva de animacion de tiempo </param>
     /// <param name="time"> Tiempo total de la transición </param>
     /// <returns></returns>    
-    IEnumerator ScaleInY(Vector3 posScale1, int value, AnimationCurve ac, float time)
+    IEnumerator ScaleInY(int value, AnimationCurve ac, float time)
     {
-        isRunning = true;
+        Vector3 posScale1 = ShapeManager.Get().transform.localScale;
         Vector3 toPos = posScale1;
         toPos = new Vector3(toPos.x, toPos.y + value, toPos.z);
 
@@ -106,8 +102,7 @@ public class rutinasEscalator : MonoBehaviour
             transform.localScale = new Vector3(transform.localScale.x, Mathf.Lerp(posScale1.y, toPos.y, ac.Evaluate(timer / time)), transform.localScale.z);
             timer += Time.deltaTime;
             yield return null;
-        }
-        isRunning = false;
+        }        
         timer = 0.0f;
     }
 
@@ -119,9 +114,9 @@ public class rutinasEscalator : MonoBehaviour
     /// <param name="ac"> Curva de animacion de tiempo </param>
     /// <param name="time"> Tiempo total de la transición </param>
     /// <returns></returns>    
-    IEnumerator ScaleInZ(Vector3 posScale1, int value, AnimationCurve ac, float time)
+    IEnumerator ScaleInZ(int value, AnimationCurve ac, float time)
     {
-        isRunning = true;
+        Vector3 posScale1 = ShapeManager.Get().transform.localScale;
         Vector3 toPos = posScale1;
         toPos = new Vector3(toPos.x, toPos.y, toPos.z + value);
 
@@ -130,8 +125,7 @@ public class rutinasEscalator : MonoBehaviour
             transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, Mathf.Lerp(posScale1.z, toPos.z, ac.Evaluate(timer / time)));
             timer += Time.deltaTime;
             yield return null;
-        }
-        isRunning = false;
+        }        
         timer = 0.0f;
     }
 }

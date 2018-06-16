@@ -4,41 +4,36 @@ using UnityEngine;
 
 public class RutinasTraslator : MonoBehaviour
 {
-    public float totalTime;
+    private float totalTime;
     public Transform endPos;
     public AnimationCurve ac;
     public int toX;
-
-    private bool isRunning;
+    
     private float timer;
 
     private void Start()
     {
-        timer = 0;
-        isRunning = false;
+        totalTime = ShapeManager.Get().GetTime();
+        timer = 0;        
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
-            if (!isRunning)
-                StartCoroutine(Move(transform.position, endPos.position, ac, totalTime));
+            ShapeManager.Get().AddCommand(Move(endPos.position, ac, totalTime));
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (!isRunning)
-                StartCoroutine(MoveInX(transform.position, toX, ac, totalTime));
+            ShapeManager.Get().AddCommand(MoveInX(toX, ac, totalTime));
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (!isRunning)
-                StartCoroutine(MoveInY(transform.position, toX, ac, totalTime));
+            ShapeManager.Get().AddCommand(MoveInY(toX, ac, totalTime));
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (!isRunning)
-                StartCoroutine(MoveInZ(transform.position, toX, ac, totalTime));
+            ShapeManager.Get().AddCommand(MoveInZ(toX, ac, totalTime));
         }
     }
 
@@ -50,16 +45,16 @@ public class RutinasTraslator : MonoBehaviour
     /// <param name="ac"> Curva de animacion de tiempo </param>
     /// <param name="time"> Tiempo total de la transición </param>
     /// <returns></returns>
-    IEnumerator Move(Vector3 pos1, Vector3 pos2, AnimationCurve ac, float time)
+    IEnumerator Move(Vector3 pos2, AnimationCurve ac, float time)
     {
-        isRunning = true;
+        Vector3 pos1 = ShapeManager.Get().transform.position;
+
         while (timer <= time)
-        {
+        {            
             transform.position = Vector3.Lerp(pos1, pos2, ac.Evaluate(timer / time));
             timer += Time.deltaTime;
             yield return null;
         }
-        isRunning = false;
         timer = 0.0f;
     }
 
@@ -71,9 +66,9 @@ public class RutinasTraslator : MonoBehaviour
     /// <param name="ac"> Curva de animacion de tiempo </param>
     /// <param name="time"> Tiempo total de la transición </param>
     /// <returns></returns>
-    IEnumerator MoveInX(Vector3 pos1, int value, AnimationCurve ac, float time)
+    IEnumerator MoveInX(int value, AnimationCurve ac, float time)
     {
-        isRunning = true;
+        Vector3 pos1 = ShapeManager.Get().transform.position;
         Vector3 toPos = pos1;
         toPos = new Vector3(toPos.x + value, toPos.y, toPos.z);
 
@@ -83,7 +78,6 @@ public class RutinasTraslator : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-        isRunning = false;
         timer = 0.0f;
     }
 
@@ -95,9 +89,9 @@ public class RutinasTraslator : MonoBehaviour
     /// <param name="ac"> Curva de animacion de tiempo </param>
     /// <param name="time"> Tiempo total de la transición </param>
     /// <returns></returns>    
-    IEnumerator MoveInY(Vector3 pos1, int value, AnimationCurve ac, float time)
+    IEnumerator MoveInY(int value, AnimationCurve ac, float time)
     {
-        isRunning = true;
+        Vector3 pos1 = ShapeManager.Get().transform.position;
         Vector3 toPos = pos1;
         toPos = new Vector3(toPos.x, toPos.y + value, toPos.z);
 
@@ -107,7 +101,6 @@ public class RutinasTraslator : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-        isRunning = false;
         timer = 0.0f;
     }
 
@@ -119,9 +112,9 @@ public class RutinasTraslator : MonoBehaviour
     /// <param name="ac"> Curva de animacion de tiempo </param>
     /// <param name="time"> Tiempo total de la transición </param>
     /// <returns></returns>    
-    IEnumerator MoveInZ(Vector3 pos1, int value, AnimationCurve ac, float time)
+    IEnumerator MoveInZ(int value, AnimationCurve ac, float time)
     {
-        isRunning = true;
+        Vector3 pos1 = ShapeManager.Get().transform.position;
         Vector3 toPos = pos1;
         toPos = new Vector3(toPos.x,toPos.y,toPos.z+value);
 
@@ -131,7 +124,6 @@ public class RutinasTraslator : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-        isRunning = false;
         timer = 0.0f;
     }
 }

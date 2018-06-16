@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\Transformator.cs" />
     <Compile Include="Assets\Scripts\Traslator.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
+    <Compile Include="Assets\ShapeManager.cs" />
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
     <Reference Include="Unity.PackageManagerUI.Editor">
       <HintPath>C:/Users/gsvil/Documents/Proyectos/MathQuiz/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
