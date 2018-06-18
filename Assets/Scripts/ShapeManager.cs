@@ -60,10 +60,10 @@ public class ShapeManager : MonoBehaviour
             GameManager.Get().Win();
         }
         else
-        {
+        {           
             GameManager.Get().Restart();
         }
-        commandList.Clear();
+        CleanList();
         running = false;        
     }
     public void AddCommand(GameObject command)
@@ -77,7 +77,7 @@ public class ShapeManager : MonoBehaviour
     public void StopExecute()
     {        
         StopAllCoroutines();
-        commandList.Clear();
+        CleanList();
         running = false;
     }
     public void ResetPos()
@@ -94,7 +94,14 @@ public class ShapeManager : MonoBehaviour
             ResetPos();
         }
     }
-
+    private void CleanList()
+    {
+        for (int i = 0; i < commandList.Count; i++)
+        {
+            Destroy(commandList[i].transform.gameObject);
+        }
+        commandList.Clear();
+    }
     private void RoundToInt()
     {
         endPos = GetEndPos();

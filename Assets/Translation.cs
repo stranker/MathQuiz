@@ -27,8 +27,7 @@ public class Translation : Transformations
     {        
         if (timer <= time)
         {
-            Debug.Log(timer);
-            ShapeManager.Get().transform.position = Vector3.Lerp(pos1, toPos, ac.Evaluate(timer / time));
+            Debug.Log(timer);            
             timer += Time.deltaTime;
         }
         else
