@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Forma
   - Mira
+  - Obstacle
   layers:
   - Default
   - TransparentFX

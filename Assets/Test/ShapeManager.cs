@@ -85,11 +85,13 @@ public class ShapeManager : MonoBehaviour
     public void StopExecute()
     {
         StopAllCoroutines();
+        commandList.Clear();        
     }
     public void ResetPos()
     {
         transform.position = GameManager.Get().GetStartPos();
         transform.rotation = Quaternion.Euler(Vector3.zero);
+        running = false;
     }
     private void OnCollisionEnter(Collision collision)
     {
