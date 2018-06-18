@@ -59,6 +59,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Escalation.cs" />
+    <Compile Include="Assets\Escalator.cs" />
+    <Compile Include="Assets\NOSE.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Misc\HueCube.cs" />
@@ -72,6 +75,8 @@
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_SceneMeshRender.cs" />
     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Util.cs" />
     <Compile Include="Assets\ProCore\ProGrids\MonoBehaviour\pg_IgnoreSnap.cs" />
+    <Compile Include="Assets\Rotation.cs" />
+    <Compile Include="Assets\Rotator.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />
@@ -80,21 +85,18 @@
     <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
-    <Compile Include="Assets\Scripts\Forma.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\Rotator.cs" />
-    <Compile Include="Assets\Scripts\Scaleitor.cs" />
-    <Compile Include="Assets\Scripts\Simetrikator.cs" />
+    <Compile Include="Assets\Scripts\RutinasEscalator.cs" />
+    <Compile Include="Assets\Scripts\RutinasRotator.cs" />
+    <Compile Include="Assets\Scripts\RutinasTraslator.cs" />
+    <Compile Include="Assets\Scripts\ShapeManager.cs" />
     <Compile Include="Assets\Scripts\Transformator.cs" />
-    <Compile Include="Assets\Scripts\Traslator.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
-    <Compile Include="Assets\Test\Player2.cs" />
-    <Compile Include="Assets\Test\RutinasEscalator.cs" />
-    <Compile Include="Assets\Test\RutinasRotator.cs" />
-    <Compile Include="Assets\Test\RutinasTraslator.cs" />
-    <Compile Include="Assets\Test\ShapeManager.cs" />
-    <Compile Include="Assets\Test\Transformator2.cs" />
+    <Compile Include="Assets\Transformations.cs" />
+    <Compile Include="Assets\Transformators.cs" />
+    <Compile Include="Assets\Translation.cs" />
+    <Compile Include="Assets\Traslator.cs" />
     <None Include="Assets\ProCore\ProGrids\Shader\pg_GridShader.shader" />
     <None Include="Assets\ProCore\ProBuilder\Shader\pb_TransparentOverlay.shader" />
     <None Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\README.txt" />
