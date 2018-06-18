@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Player : MonoBehaviour {
 
     public List<GameObject> transformadores;
     private GameObject currWeapon;
     public LayerMask layerForma;
-    
+
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         ActivarArma(0);
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         ChangeWeapon();
         ChangeAxis();
 
@@ -23,17 +24,18 @@ public class Player : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * 10, Color.red, 1);
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 10, layerForma))
             {
                 if (hit.transform.tag == "Forma")
                 {
-                    currWeapon.GetComponent<Transformator>().Transformate(hit.transform.gameObject);
-                    UIManager.Get().DrawText(hit.transform.gameObject);
+                    Debug.Log("Command");
+                    currWeapon.GetComponent<Transformator>().Transformate();
+                    //UIManager.Get().DrawText(hit.transform.gameObject);
                 }
             }
-        }
-        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * 10, Color.red, 1);
+        }        
     }
 
     private void ChangeWeapon()
@@ -44,8 +46,6 @@ public class Player : MonoBehaviour {
             ActivarArma(1);
         else if (Input.GetKeyDown(KeyCode.Alpha3))
             ActivarArma(2);
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-            ActivarArma(3);
     }
 
     private void ChangeAxis()

@@ -23,8 +23,8 @@ public class UIManager : MonoBehaviour {
     }
     #endregion
     void Update () {
-        weaponName.text = GameManager.Get().player.GetComponent<Player2>().GetWeaponName();
-        switch (GameManager.Get().player.GetComponent<Player2>().GetWeapon().GetComponent<Transformator2>().GetEje())
+        weaponName.text = GameManager.Get().player.GetComponent<Player>().GetWeaponName();
+        switch (GameManager.Get().player.GetComponent<Player>().GetWeapon().GetComponent<Transformator>().GetEje())
         {
             case 0:
                 eje.text = "Eje X";
@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour {
             default:
                 break;
         }
-        valor.text = "VALOR " + GameManager.Get().player.GetComponent<Player2>().GetWeapon().GetComponent<Transformator2>().GetValor().ToString();
+        valor.text = "VALOR " + GameManager.Get().player.GetComponent<Player>().GetWeapon().GetComponent<Transformator>().GetValor().ToString();
     }
     public void DrawText(GameObject forma)
     {

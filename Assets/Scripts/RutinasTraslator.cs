@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RutinasTraslator : Transformator2
+public class RutinasTraslator : Transformator
 {
     private float totalTime;
     public AnimationCurve ac;
@@ -49,18 +49,7 @@ public class RutinasTraslator : Transformator2
     }
     public override void Transformate()
     {
-        switch (eje)
-        {
-            case 0:
-                ShapeManager.Get().AddCommand(MoveInAxis(eje,value, ac, totalTime));
-                break;
-            case 1:
-                ShapeManager.Get().AddCommand(MoveInAxis(eje,value, ac, totalTime));
-                break;
-            case 2:
-                ShapeManager.Get().AddCommand(MoveInAxis(eje,value, ac, totalTime));
-                break;
-        }
+        ShapeManager.Get().AddCommand(MoveInAxis(eje, value, ac, totalTime));
     }
 
     IEnumerator MoveInAxis(int axis, int value, AnimationCurve ac, float time)
@@ -79,7 +68,7 @@ public class RutinasTraslator : Transformator2
                 toPos = ShapeManager.Get().transform.forward;
                 break;
             default:
-                break;
+                break;                
         }
         toPos *= value;
         toPos += pos1;
