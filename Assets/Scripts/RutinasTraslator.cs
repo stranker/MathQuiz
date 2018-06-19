@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class RutinasTraslator : Transformacion
 {
-    public float totalTime;
     public GameObject forma;
     public Vector3 endPos;
     public AnimationCurve ac;
-    public int toX;
-    private float timer;
+    public float totalTime;
+    public float timer;
+    public Vector3 position;
 
     private void Start()
     {
@@ -21,7 +21,7 @@ public class RutinasTraslator : Transformacion
         {
             if (timer <= totalTime)
             {
-                Vector3 position = Vector3.Lerp(forma.transform.position, endPos, ac.Evaluate(timer / totalTime));
+                position = Vector3.Lerp(forma.transform.position, endPos, ac.Evaluate(timer / totalTime));
                 forma.transform.position = position;
                 timer += Time.deltaTime;
             }
@@ -29,6 +29,8 @@ public class RutinasTraslator : Transformacion
             {
                 SetRunning(false);
                 timer = 0.0f;
+                forma.GetComponent<Forma>().RemoveTransform(this);
+                Destroy(gameObject);
             }
         }
     }
