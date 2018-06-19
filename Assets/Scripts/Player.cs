@@ -19,13 +19,12 @@ public class Player : MonoBehaviour {
         ChangeWeapon();
         ChangeAxis();
 
-
-
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 10, layerForma))
             {
+                Debug.Log("HIT");
                 if (hit.transform.tag == "Forma")
                 {
                     currWeapon.GetComponent<Transformator>().Transformate(hit.transform.gameObject);

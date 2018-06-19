@@ -42,7 +42,7 @@ public class Scale : Transformacion {
             {
                 SetRunning(false);
                 timer = 0.0f;
-                forma.GetComponent<Forma>().RemoveTransform(this);
+                forma.GetComponent<Forma>().RemoveTransform();
                 Destroy(gameObject);
             }
         }
@@ -50,6 +50,7 @@ public class Scale : Transformacion {
 
     public override void Execute(GameObject _forma)
     {
+        forma = _forma;
         SetRunning(true);
     }
 

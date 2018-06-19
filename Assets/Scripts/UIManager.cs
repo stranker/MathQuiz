@@ -9,8 +9,8 @@ public class UIManager : MonoBehaviour {
     public Text weaponName;
     public Text eje;
     public Text valor;
-    public Text posicion;
-    public Text rotacion;
+    //public Text posicion;
+    //public Text rotacion;
     #region Singleton
     private void Awake()
     {
@@ -46,7 +46,7 @@ public class UIManager : MonoBehaviour {
     public void DrawText(GameObject forma)
     {
         
-        posicion.text = forma.transform.position.x.ToString(".0") + "," + forma.transform.position.y.ToString(".0") + "," + forma.transform.position.z.ToString(".0");
-        rotacion.text = (forma.transform.rotation.x*360).ToString("0") + "°," + (forma.transform.rotation.y*360).ToString("0") + "°," + (forma.transform.rotation.z * 360).ToString("0") + "°";
+      //  posicion.text = forma.transform.position.x.ToString(".0") + "," + forma.transform.position.y.ToString(".0") + "," + forma.transform.position.z.ToString(".0");
+        //rotacion.text = (forma.transform.rotation.x*360).ToString("0") + "°," + (forma.transform.rotation.y*360).ToString("0") + "°," + (forma.transform.rotation.z * 360).ToString("0") + "°";
     }
 }

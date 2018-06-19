@@ -12,15 +12,17 @@ public class Transformacion : MonoBehaviour
     public float timer;
     private bool isRunning;
     public int axis;
+    public int value;
 
     public virtual void Execute(GameObject forma)
     {
         isRunning = true;
     }
 
-    public virtual void Create(GameObject _forma, int value, int eje)
+    public virtual void Create(GameObject _forma, int _value, int eje)
     {
         forma = _forma;
+        value = _value;
         axis = eje;
     }
 

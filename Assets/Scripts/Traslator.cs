@@ -5,7 +5,6 @@ using UnityEngine;
 public class Traslator : Transformator
 {
     public GameObject traslatePrefab;
-    public LayerMask layerForma;
 
     // Use this for initialization
     void Start()
@@ -14,9 +13,9 @@ public class Traslator : Transformator
 
     public override void Transformate(GameObject forma)
     {
-        Traslation traslation = Instantiate(traslatePrefab, forma.transform).GetComponent<Traslation>();
-        traslation.Create(forma,valor,eje);
-        forma.GetComponent<Forma>().AddTransform(traslation);
+        GameObject traslation = Instantiate(traslatePrefab, forma.transform);
+        traslation.GetComponent<Traslation>().Create(forma, valor, eje);
+        forma.GetComponent<Forma>().AddTransform(traslation.GetComponent<Traslation>());
     }
 
     // Update is called once per frame

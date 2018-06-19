@@ -4,9 +4,13 @@ using UnityEngine;
 public class Forma : MonoBehaviour {
 
     public List<Transformacion> transformationList;
+    public Vector3 initialPosition;
+    public Vector3 initialRotation;
 
     private void Start()
     {
+        initialPosition = transform.position;
+        initialRotation = transform.eulerAngles;
     }
 
     public void AddTransform(Transformacion trans)
@@ -16,8 +20,10 @@ public class Forma : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.Return))
             ExecuteTransforms();
+        if (Input.GetKeyDown(KeyCode.Backspace))
+            ResetForma();
     }
 
     public void ExecuteTransforms()
@@ -28,10 +34,19 @@ public class Forma : MonoBehaviour {
             Debug.Log("DONE");
     }
 
-    public void RemoveTransform(Transformacion trans)
+    public void RemoveTransform()
     {
-        transformationList.Remove(trans);
+        transformationList.RemoveAt(0);
         ExecuteTransforms();
+    }
+
+    public void ResetForma()
+    {
+        transform.position = initialPosition;
+        transform.eulerAngles = initialRotation;
+        foreach (Transformacion trans in transformationList)
+            trans.SetRunning(false);
+        transformationList.Clear();
     }
 
 }

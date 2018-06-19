@@ -5,7 +5,6 @@ public class Rotation : Transformacion
 
     private void Start()
     {
-        timer = 0;
     }
 
     public override void Create(GameObject forma, int value, int eje)
@@ -54,7 +53,7 @@ public class Rotation : Transformacion
             {
                 SetRunning(false);
                 timer = 0.0f;
-                forma.GetComponent<Forma>().RemoveTransform(this);
+                forma.GetComponent<Forma>().RemoveTransform();
                 Destroy(gameObject);
             }
         }
@@ -62,6 +61,7 @@ public class Rotation : Transformacion
 
     public override void Execute(GameObject _forma)
     {
+        forma = _forma;
         SetRunning(true);
     }
 }

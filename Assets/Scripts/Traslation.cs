@@ -9,9 +9,9 @@ public class Traslation : Transformacion
         timer = 0;
     }
 
-    public override void Create(GameObject _forma, int value, int eje)
+    public override void Create(GameObject _forma, int val, int eje)
     {
-        base.Create(_forma, value, eje);
+        base.Create(_forma, val, eje);
         initialAttribute = forma.transform.position;
         switch (axis)
         {
@@ -43,7 +43,7 @@ public class Traslation : Transformacion
             {
                 SetRunning(false);
                 timer = 0.0f;
-                forma.GetComponent<Forma>().RemoveTransform(this);
+                forma.GetComponent<Forma>().RemoveTransform();
                 Destroy(gameObject);
             }
         }
@@ -51,7 +51,7 @@ public class Traslation : Transformacion
 
     public override void Execute(GameObject _forma)
     {
-
+        Create(_forma, value, axis);
         SetRunning(true);
     }
 }
