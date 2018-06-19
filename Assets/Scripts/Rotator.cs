@@ -23,9 +23,10 @@ public class Rotator : Transformator {
 
     }
 
+
     public override void Transformate(GameObject forma)
     {
-        forma.transform.GetComponent<Forma>().Rotate(vectorRotacion * valor);
+        throw new System.NotImplementedException();
     }
 
     private void CambiarVectorEje()

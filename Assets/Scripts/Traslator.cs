@@ -13,6 +13,11 @@ public class Traslator : Transformator
     {
     }
 
+    public override void Transformate(GameObject forma)
+    {
+        throw new System.NotImplementedException();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -20,10 +25,5 @@ public class Traslator : Transformator
             valor++;
         else if (Input.GetKeyDown(KeyCode.Q))
             valor--;
-    }
-
-    public override void Transformate(GameObject forma)
-    {
-        forma.transform.GetComponent<Forma>().Traslate(valor, GetEje());
     }
 }

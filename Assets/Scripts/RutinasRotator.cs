@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RutinasRotator : MonoBehaviour
+public class RutinasRotator : Transformacion
 {
 
     public float totalTime;
-    public Transform endPos;
+    public Vector3 endPos;
     public AnimationCurve ac;
     public int toX;
 
@@ -54,7 +54,7 @@ public class RutinasRotator : MonoBehaviour
     IEnumerator Rotate(Quaternion pos1, Quaternion pos2, AnimationCurve ac, float time)
     {
         isRunning = true;
-        while (timer <= time)
+        if (timer <= time)
         {
             transform.rotation = Quaternion.Lerp(pos1, pos2, ac.Evaluate(timer / time));
             timer += Time.deltaTime;

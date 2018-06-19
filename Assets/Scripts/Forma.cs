@@ -6,6 +6,35 @@ public class Forma : MonoBehaviour {
     public GameObject transformacion;
     public List<Transformacion> transformationList;
 
+    private void Start()
+    {
+        AddTransform(transformacion.GetComponent<Transformacion>());
+    }
+
+    public void AddTransform(Transformacion trans)
+    {
+        transformationList.Add(trans);
+    }
+
+    private void Update()
+    {
+        ExecuteTransforms();
+    }
+
+    public void ExecuteTransforms()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            if (transformationList.Count > 0)
+            {
+                transformationList[0].Execute(gameObject);
+            }
+        }
+    }
+
+
+
+    /*
     public void Rotate(Vector3 rotacion)
     {
         transform.Rotate(rotacion);
@@ -42,5 +71,5 @@ public class Forma : MonoBehaviour {
             transform.localScale = new Vector3(transform.localScale.x, escalacion.y, transform.localScale.z);
         else if (escalacion.z != 0)
             transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, escalacion.z);
-    }
+    }*/
 }

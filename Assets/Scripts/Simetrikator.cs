@@ -21,9 +21,10 @@ public class Simetrikator : Transformator {
         CambiarVectorEje();
     }
 
-    override public void Transformate(GameObject forma)
+
+    public override void Transformate(GameObject forma)
     {
-        forma.GetComponent<Forma>().Symmetry(ejeSimetria, vectorTraslacion);
+        throw new System.NotImplementedException();
     }
 
     private void CambiarVectorEje()

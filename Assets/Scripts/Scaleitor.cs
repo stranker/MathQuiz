@@ -24,9 +24,10 @@ public class Scaleitor : Transformator {
             valor -= 0.5f;
     }
 
-    override public void Transformate(GameObject forma)
+
+    public override void Transformate(GameObject forma)
     {
-        forma.GetComponent<Forma>().Scale(vectorEscalacion * valor);
+        throw new System.NotImplementedException();
     }
 
     private void CambiarVectorEje()
