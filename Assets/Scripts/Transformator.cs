@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-abstract public class Transformator : MonoBehaviour {
+public class Transformator : MonoBehaviour
+{
     enum EJE
     {
         X,
@@ -11,7 +10,7 @@ abstract public class Transformator : MonoBehaviour {
         LAST
     }
     public int eje;
-    public float valor;
+    public int valor;
 
     public void NextEje()
     {
@@ -19,7 +18,10 @@ abstract public class Transformator : MonoBehaviour {
         eje = eje % (int)EJE.LAST;
     }
 
-    abstract public void Transformate(GameObject forma);
+    public virtual void Transformate(GameObject forma)
+    {
+
+    }
 
     public int GetEje()
     {

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Transformacion : MonoBehaviour
 {
-    public float valor;
     private bool isRunning;
 
     public virtual void Execute(GameObject forma)
@@ -11,9 +10,9 @@ public class Transformacion : MonoBehaviour
         isRunning = true;
     }
 
-    public float GetValor()
+    public virtual void Create(GameObject forma, int value, int eje)
     {
-        return valor;
+
     }
 
     public bool IsRunning()

@@ -1,18 +1,38 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class RutinasTraslator : Transformacion
+public class Traslation : Transformacion
 {
     public GameObject forma;
+    public Vector3 initialPos;
     public Vector3 endPos;
     public AnimationCurve ac;
     public float totalTime;
     public float timer;
-    public Vector3 position;
 
     private void Start()
     {
         timer = 0;
+    }
+
+    public override void Create(GameObject _forma, int value, int axis)
+    {
+        forma = _forma;
+        initialPos = forma.transform.position;
+        switch (axis)
+        {
+            case 0:
+                endPos = initialPos + forma.transform.right * value;
+                break;
+            case 1:
+                endPos = initialPos + forma.transform.up * value;
+                break;
+            case 2:
+                endPos = initialPos + forma.transform.forward * value;
+                break;
+            default:
+                break;
+        }
     }
 
     private void Update()
@@ -21,7 +41,7 @@ public class RutinasTraslator : Transformacion
         {
             if (timer <= totalTime)
             {
-                position = Vector3.Lerp(forma.transform.position, endPos, ac.Evaluate(timer / totalTime));
+                Vector3 position = Vector3.Lerp(initialPos, endPos, ac.Evaluate(timer / totalTime));
                 forma.transform.position = position;
                 timer += Time.deltaTime;
             }
@@ -37,7 +57,7 @@ public class RutinasTraslator : Transformacion
 
     public override void Execute(GameObject _forma)
     {
-        forma = _forma;
+
         SetRunning(true);
     }
 }

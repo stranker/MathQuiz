@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Traslator : Transformator
 {
-
-    public Vector3 vectorTraslacion;
+    public GameObject traslatePrefab;
     public LayerMask layerForma;
 
     // Use this for initialization
@@ -15,15 +14,17 @@ public class Traslator : Transformator
 
     public override void Transformate(GameObject forma)
     {
-        throw new System.NotImplementedException();
+        Traslation traslation = Instantiate(traslatePrefab, transform).GetComponent<Traslation>();
+        traslation.Create(forma,value,eje);
+        forma.GetComponent<Forma>().AddTransform(traslation);
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
-            valor++;
+            value++;
         else if (Input.GetKeyDown(KeyCode.Q))
-            valor--;
+            value--;
     }
 }
