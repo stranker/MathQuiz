@@ -14,8 +14,8 @@ public class Traslator : Transformator
 
     public override void Transformate(GameObject forma)
     {
-        Traslation traslation = Instantiate(traslatePrefab, transform).GetComponent<Traslation>();
-        traslation.Create(forma,value,eje);
+        Traslation traslation = Instantiate(traslatePrefab, forma.transform).GetComponent<Traslation>();
+        traslation.Create(forma,valor,eje);
         forma.GetComponent<Forma>().AddTransform(traslation);
     }
 
@@ -23,8 +23,8 @@ public class Traslator : Transformator
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
-            value++;
+            valor++;
         else if (Input.GetKeyDown(KeyCode.Q))
-            value--;
+            valor--;
     }
 }

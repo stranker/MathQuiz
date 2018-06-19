@@ -19,9 +19,9 @@ public class Scaleitor : Transformator {
     {
         CambiarVectorEje();
         if (Input.GetKey(KeyCode.E) || Input.mouseScrollDelta.y > 0)
-            valor += 0.5f;
+            valor += 1;
         else if (Input.GetKey(KeyCode.Q) || Input.mouseScrollDelta.y < 0)
-            valor -= 0.5f;
+            valor -= 1;
     }
 
 

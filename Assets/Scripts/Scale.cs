@@ -2,26 +2,39 @@
 
 public class Scale : Transformacion {
 
-    public GameObject forma;
-    public Vector3 initialScale;
-    public Vector3 endScale;
-    public AnimationCurve ac;
-    public float totalTime;
-    public float timer;
-
     // Use this for initialization
     void Start () {
         timer = 0;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    public override void Create(GameObject _forma, int value, int eje)
+    {
+        base.Create(_forma, value, eje);
+        initialAttribute = forma.transform.localScale;
+        switch (axis)
+        {
+            case 0:
+                endAttribute = initialAttribute + Vector3.right * value;
+                break;
+            case 1:
+                endAttribute = initialAttribute + Vector3.up * value;
+                break;
+            case 2:
+                endAttribute = initialAttribute + Vector3.forward * value;
+                break;
+            default:
+                break;
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
 
         if (IsRunning())
         {
             if (timer <= totalTime)
             {
-                Vector3 scale = Vector3.Lerp(initialScale, endScale, ac.Evaluate(timer / totalTime));
+                Vector3 scale = Vector3.Lerp(initialAttribute, endAttribute, ac.Evaluate(timer / totalTime));
                 forma.transform.localScale = scale;
                 timer += Time.deltaTime;
             }
@@ -37,22 +50,6 @@ public class Scale : Transformacion {
 
     public override void Execute(GameObject _forma)
     {
-        forma = _forma;
-        initialScale = forma.transform.localScale;
-        switch (axis)
-        {
-            case 0:
-                endScale = initialScale + Vector3.right * valor;
-                break;
-            case 1:
-                endScale = initialScale + Vector3.up * valor;
-                break;
-            case 2:
-                endScale = initialScale + Vector3.forward * valor;
-                break;
-            default:
-                break;
-        }
         SetRunning(true);
     }
 
