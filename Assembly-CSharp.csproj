@@ -67,25 +67,25 @@
     <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
-    <Compile Include="Assets\Scripts\Forma.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\Rotation.cs" />
-    <Compile Include="Assets\Scripts\Rotator.cs" />
-    <Compile Include="Assets\Scripts\Scale.cs" />
-    <Compile Include="Assets\Scripts\Scaleitor.cs" />
-    <Compile Include="Assets\Scripts\Simetrikator.cs" />
-    <Compile Include="Assets\Scripts\Transformacion.cs" />
-    <Compile Include="Assets\Scripts\Transformator.cs" />
-    <Compile Include="Assets\Scripts\Traslation.cs" />
-    <Compile Include="Assets\Scripts\Traslator.cs" />
-    <Compile Include="Assets\Scripts\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Interactables\Forma.cs" />
+    <Compile Include="Assets\Scripts\Interactables\Player.cs" />
+    <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Transformers\Rotator.cs" />
+    <Compile Include="Assets\Scripts\Transformers\Scaleitor.cs" />
+    <Compile Include="Assets\Scripts\Transformers\Simetrikator.cs" />
+    <Compile Include="Assets\Scripts\Transformers\Transformator.cs" />
+    <Compile Include="Assets\Scripts\Transformers\Traslator.cs" />
+    <Compile Include="Assets\Scripts\Transforms\Rotation.cs" />
+    <Compile Include="Assets\Scripts\Transforms\Scale.cs" />
+    <Compile Include="Assets\Scripts\Transforms\Transformacion.cs" />
+    <Compile Include="Assets\Scripts\Transforms\Traslation.cs" />
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/Daniel/Desktop/Proyectos/Unity/MathQuiz/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/Capo/Desktop/Danielito/FACU/MathQuiz/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/Daniel/Desktop/Proyectos/Unity/MathQuiz/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/Capo/Desktop/Danielito/FACU/MathQuiz/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -283,13 +283,13 @@
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
-      <HintPath>C:/Users/Daniel/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
+      <HintPath>C:/Users/Capo/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Purchasing">
-      <HintPath>C:/Users/Daniel/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.1/UnityEngine.Purchasing.dll</HintPath>
+      <HintPath>C:/Users/Capo/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.1/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
-      <HintPath>C:/Users/Daniel/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/Capo/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>
