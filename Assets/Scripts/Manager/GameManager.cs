@@ -15,18 +15,13 @@ public class GameManager : MonoBehaviour {
             Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
     }
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public static GameManager Get()
     {
         return instance;
+    }
+    public void Win()
+    {
+        Debug.Log("WIN");
     }
 }

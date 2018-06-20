@@ -37,7 +37,7 @@ public class Player : MonoBehaviour {
             }
         }
 
-        /*if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 10, layerForma))
@@ -49,7 +49,7 @@ public class Player : MonoBehaviour {
                     UIManager.Get().DrawText(hit.transform.gameObject);
                 }
             }
-        }*/
+        }
     }
 
     private void ChangeWeapon()
