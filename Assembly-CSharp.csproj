@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Interactables\Forma.cs" />
+    <Compile Include="Assets\Scripts\Interactables\FormaDisplay.cs" />
     <Compile Include="Assets\Scripts\Interactables\Player.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\Scripts\Manager\UIManager.cs" />

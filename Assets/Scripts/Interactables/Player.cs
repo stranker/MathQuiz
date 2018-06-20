@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     public List<GameObject> transformadores;
     private GameObject currWeapon;
     public LayerMask layerForma;
+    public GameObject currForma;
     
     // Use this for initialization
     void Start () {
@@ -18,10 +19,27 @@ public class Player : MonoBehaviour {
 	void Update () {
         ChangeWeapon();
         ChangeAxis();
-
-        if (Input.GetMouseButtonDown(0))
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 10, layerForma))
         {
-            RaycastHit hit;
+            if (hit.transform.tag == "Forma")
+            {
+                currForma = hit.collider.gameObject;
+                currForma.GetComponent<Forma>().DisplayInfo();
+            }
+        }
+        else
+        {
+            if (currForma)
+            {
+                currForma.GetComponent<Forma>().EndDisplay();
+                currForma = null;
+            }
+        }
+
+        /*if (Input.GetMouseButtonDown(0))
+        {
+            
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 10, layerForma))
             {
                 Debug.Log("HIT");
@@ -31,8 +49,7 @@ public class Player : MonoBehaviour {
                     UIManager.Get().DrawText(hit.transform.gameObject);
                 }
             }
-        }
-        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * 10, Color.red, 1);
+        }*/
     }
 
     private void ChangeWeapon()

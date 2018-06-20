@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Forma : MonoBehaviour {
 
+    public string name;
+    public Canvas display;
+    public int severity;
     public List<Transformacion> transformationList;
     public Vector3 initialPosition;
     public Vector3 initialRotation;
@@ -11,6 +14,7 @@ public class Forma : MonoBehaviour {
     {
         initialPosition = transform.position;
         initialRotation = transform.eulerAngles;
+        EndDisplay();
     }
 
     public void AddTransform(Transformacion trans)
@@ -24,6 +28,18 @@ public class Forma : MonoBehaviour {
             ExecuteTransforms();
         if (Input.GetKeyDown(KeyCode.Backspace))
             ResetForma();
+    }
+
+    public void DisplayInfo()
+    {
+        display.GetComponent<Animator>().Play("Appear");
+        display.GetComponent<FormaDisplay>().SetInformation(gameObject);
+    }
+
+    public void EndDisplay()
+    {
+        display.GetComponent<Animator>().Play("Disappear");
+        display.GetComponent<FormaDisplay>().EndDisplay();
     }
 
     public void ExecuteTransforms()
@@ -48,5 +64,4 @@ public class Forma : MonoBehaviour {
             trans.SetRunning(false);
         transformationList.Clear();
     }
-
 }
