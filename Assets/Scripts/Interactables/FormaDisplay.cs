@@ -9,14 +9,11 @@ public class FormaDisplay : MonoBehaviour
     public Text severity;
     public Text initialPos;
     public Text endPos;
-
-    private void Start()
-    {
-    }
+    public Animator anim;
+    
 
     public void SetInformation(GameObject forma)
-    {
-        SetActiveLabels(true);
+    {        
         Forma f = forma.GetComponent<Forma>();
         partName.text = f.name;
         switch (f.severity)
@@ -41,16 +38,13 @@ public class FormaDisplay : MonoBehaviour
     }
 
     public void EndDisplay()
-    {
-        SetActiveLabels(false);
+    {        
+        anim.SetBool("Appear", false);        
     }
 
-    private void SetActiveLabels(bool val)
+    public void StartDisplay()
     {
-        partName.gameObject.SetActive(val);
-        severity.gameObject.SetActive(val);
-        initialPos.gameObject.SetActive(val);
-        endPos.gameObject.SetActive(val);
+        anim.SetBool("Appear", true);        
     }
 
 }

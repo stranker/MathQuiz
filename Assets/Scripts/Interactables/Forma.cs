@@ -31,14 +31,13 @@ public class Forma : MonoBehaviour {
     }
 
     public void DisplayInfo()
-    {
-        display.GetComponent<Animator>().Play("Appear");
+    {        
         display.GetComponent<FormaDisplay>().SetInformation(gameObject);
+        display.GetComponent<FormaDisplay>().StartDisplay();
     }
 
     public void EndDisplay()
-    {
-        display.GetComponent<Animator>().Play("Disappear");
+    {        
         display.GetComponent<FormaDisplay>().EndDisplay();
     }
 
