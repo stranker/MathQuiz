@@ -10,7 +10,16 @@ public class FormaDisplay : MonoBehaviour
     public Text initialPos;
     public Text endPos;
     public Animator anim;
-    
+    public Vector3 offset;
+
+    private void Start()
+    {
+    }
+
+    private void Update()
+    {
+        transform.LookAt(-GameManager.Get().player.transform.position);
+    }
 
     public void SetInformation(GameObject forma)
     {        
@@ -34,7 +43,6 @@ public class FormaDisplay : MonoBehaviour
                 break;
         }
         initialPos.text = "X:" + f.initialPosition.x + " Y:" + f.initialPosition.y + " Z:" + f.initialPosition.z;
-
     }
 
     public void EndDisplay()
