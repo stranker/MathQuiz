@@ -13,9 +13,7 @@ public class Forma : MonoBehaviour
     public List<Transformacion> transformationList;
     public Vector3 initialPosition;
     public Vector3 initialRotation;
-    public Vector3 EndPosition;
-    public Vector3 EndRotation;
-    public Vector3 EndScalation;
+    public GameObject EndPosition;
 
     private bool executing;
 
@@ -82,10 +80,7 @@ public class Forma : MonoBehaviour
     private bool EndPositionsOK()
     {
         RoundToInt();
-        Debug.Log(EndPosition);
-        Debug.Log(EndRotation);
-        Debug.Log(EndScalation);
-        if ((transform.position == EndPosition) && (transform.eulerAngles == EndRotation) && (transform.localScale == EndScalation))
+        if ((transform.position == EndPosition.transform.position) && (transform.eulerAngles == EndPosition.transform.eulerAngles) && (transform.localScale == EndPosition.transform.localScale))
         {
             return true;
         }
@@ -97,5 +92,9 @@ public class Forma : MonoBehaviour
         transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y), Mathf.RoundToInt(transform.position.z));
         transform.eulerAngles = new Vector3(Mathf.RoundToInt(transform.eulerAngles.x), Mathf.RoundToInt(transform.eulerAngles.y), Mathf.RoundToInt(transform.eulerAngles.z));
         transform.localScale = new Vector3(Mathf.RoundToInt(transform.localScale.x), Mathf.RoundToInt(transform.localScale.y), Mathf.RoundToInt(transform.localScale.z));
+    }
+    public Vector3 GetEndPosition()
+    {
+        return EndPosition.transform.position;
     }
 }

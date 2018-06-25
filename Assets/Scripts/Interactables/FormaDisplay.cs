@@ -23,7 +23,7 @@ public class FormaDisplay : MonoBehaviour
 
     public void SetInformation(GameObject forma)
     {        
-        Forma f = forma.GetComponent<Forma>();
+        Forma f = forma.GetComponent<Forma>();        
         partName.text = f.name;
         switch (f.severity)
         {
@@ -43,6 +43,7 @@ public class FormaDisplay : MonoBehaviour
                 break;
         }
         initialPos.text = "X:" + f.initialPosition.x + " Y:" + f.initialPosition.y + " Z:" + f.initialPosition.z;
+        endPos.text = "X:" + f.GetEndPosition().x + " Y:" + f.GetEndPosition().y + " Z:" + f.GetEndPosition().z;
     }
 
     public void EndDisplay()
