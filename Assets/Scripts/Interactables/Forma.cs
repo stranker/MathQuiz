@@ -30,14 +30,6 @@ public class Forma : MonoBehaviour
         transformationList.Add(trans);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Return))
-            ExecuteTransforms();
-        if (Input.GetKeyDown(KeyCode.Backspace))
-            ResetForma();
-    }
-
     public void DisplayInfo()
     {
         display.GetComponent<FormaDisplay>().SetInformation(gameObject);
@@ -56,7 +48,7 @@ public class Forma : MonoBehaviour
         else if (executing && EndPositionsOK())
         {
             ShapeInPosition(gameObject);
-            executing = false;
+            DisableShape();
         }
         else
             Debug.Log("notwin");
@@ -96,5 +88,11 @@ public class Forma : MonoBehaviour
     public Vector3 GetEndPosition()
     {
         return EndPosition.transform.position;
+    }
+    private void DisableShape()
+    {
+        display.transform.gameObject.SetActive(false);
+        EndPosition.transform.gameObject.SetActive(false);
+        this.enabled = false;
     }
 }

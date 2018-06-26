@@ -19,6 +19,7 @@ public class Player : MonoBehaviour {
 	void Update () {
         ChangeWeapon();
         ChangeAxis();
+        Inputs();
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 10, layerForma))
         {
@@ -51,7 +52,13 @@ public class Player : MonoBehaviour {
             }
         }
     }
-
+    private void Inputs()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+            currForma.GetComponent<Forma>().ExecuteTransforms();
+        if (Input.GetKeyDown(KeyCode.Backspace))
+            currForma.GetComponent<Forma>().ResetForma();
+    }
     private void ChangeWeapon()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))

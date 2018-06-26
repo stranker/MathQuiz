@@ -12,13 +12,9 @@ public class FormaDisplay : MonoBehaviour
     public Animator anim;
     public Vector3 offset;
 
-    private void Start()
-    {
-    }
-
     private void Update()
     {
-        transform.LookAt(-GameManager.Get().player.transform.position);
+        transform.LookAt(2 * transform.position - GameManager.Get().player.transform.position);        
     }
 
     public void SetInformation(GameObject forma)
@@ -55,5 +51,4 @@ public class FormaDisplay : MonoBehaviour
     {
         anim.SetBool("Appear", true);        
     }
-
 }
