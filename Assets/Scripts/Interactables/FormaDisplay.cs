@@ -11,26 +11,18 @@ public class FormaDisplay : MonoBehaviour
     public Text endPos;
     public Animator anim;
     public Vector3 offset;
-    public int minDistance = 2;
-    public Vector3 initScale;
+    public float minDistance = 0.5f;
+    public Vector3 initPos;
 
     private void Start()
     {
-        initScale = transform.localScale;
+        initPos = transform.position;
     }
 
     private void Update()
     {
-        if ((transform.parent.position - GameManager.Get().player.transform.position).magnitude > minDistance)
-        {
-            transform.localScale = initScale;
-        }
-        else
-        {
-            transform.localScale = initScale * 2;
-        }
         transform.LookAt(2 * transform.position - GameManager.Get().player.transform.position);
-        //Vector3 pos = Vector3
+        transform.position = initPos + transform.right * 1.4f;
     }
 
     public void SetInformation(GameObject forma)

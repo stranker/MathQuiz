@@ -13,6 +13,7 @@ public class Forma : MonoBehaviour
     public List<Transformacion> transformationList;
     public Vector3 initialPosition;
     public Vector3 initialRotation;
+    public Vector3 initialScale;
     public GameObject EndPosition;
 
     private bool executing;
@@ -23,6 +24,7 @@ public class Forma : MonoBehaviour
         displayActive = true;
         initialPosition = transform.position;
         initialRotation = transform.eulerAngles;
+        initialScale = transform.localScale;
         EndDisplay();
         executing = false;
     }
@@ -71,6 +73,7 @@ public class Forma : MonoBehaviour
     {
         transform.position = initialPosition;
         transform.eulerAngles = initialRotation;
+        transform.localScale = initialScale;
         foreach (Transformacion trans in transformationList)
             trans.SetRunning(false);
         transformationList.Clear();
