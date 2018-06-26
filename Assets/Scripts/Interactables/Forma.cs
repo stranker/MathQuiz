@@ -16,9 +16,11 @@ public class Forma : MonoBehaviour
     public GameObject EndPosition;
 
     private bool executing;
+    private bool displayActive;
 
     private void Start()
     {
+        displayActive = true;
         initialPosition = transform.position;
         initialRotation = transform.eulerAngles;
         EndDisplay();
@@ -32,12 +34,16 @@ public class Forma : MonoBehaviour
 
     public void DisplayInfo()
     {
-        display.GetComponent<FormaDisplay>().SetInformation(gameObject);
-        display.GetComponent<FormaDisplay>().StartDisplay();
+        if (displayActive)
+        {
+            display.GetComponent<FormaDisplay>().SetInformation(gameObject);
+            display.GetComponent<FormaDisplay>().StartDisplay();
+        }
     }
 
     public void EndDisplay()
     {
+        if(displayActive)
         display.GetComponent<FormaDisplay>().EndDisplay();
     }
 
@@ -51,7 +57,7 @@ public class Forma : MonoBehaviour
             DisableShape();
         }
         else
-            Debug.Log("notwin");
+            ResetForma();
     }
 
     public void RemoveTransform()
@@ -93,6 +99,6 @@ public class Forma : MonoBehaviour
     {
         display.transform.gameObject.SetActive(false);
         EndPosition.transform.gameObject.SetActive(false);
-        this.enabled = false;
+        displayActive = false;
     }
 }
