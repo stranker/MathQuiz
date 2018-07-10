@@ -7,7 +7,6 @@ public class Forma : MonoBehaviour
     public delegate void ShapeActions(GameObject shape);
     public ShapeActions ShapeInPosition;
 
-    public string name;
     public Canvas display;
     public int severity;
     public List<Transformacion> transformationList;
@@ -104,4 +103,12 @@ public class Forma : MonoBehaviour
         EndPosition.transform.gameObject.SetActive(false);
         displayActive = false;
     }
+
+    public void GoToFinal()
+    {
+        transform.position = EndPosition.transform.position;
+        transform.rotation = EndPosition.transform.rotation;
+        transform.localScale = EndPosition.transform.localScale;
+    }
+
 }
